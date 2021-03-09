@@ -4,16 +4,15 @@ import de.jonas.VierGewinnt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
-public class CheckWin {
+public class WinHandler {
 
-    public CheckWin() {
+    public void checkWin() {
         if (hasWon(FieldState.USER)) {
             new VierGewinnt().win(FieldState.USER);
             return;
         }
         if (hasWon(FieldState.COMPUTER)) {
             new VierGewinnt().win(FieldState.COMPUTER);
-            return;
         }
     }
 

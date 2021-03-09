@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-public class DrawGui extends JLabel {
+public class Draw extends JLabel {
 
     public static final int MARGIN_TOP = 50;
     public static final int MARGIN_LEFT_AND_RIGHT = 20;
@@ -29,7 +29,7 @@ public class DrawGui extends JLabel {
             this.getHeight() - MARGIN_TOP
         );
 
-        for (final CircleLocation loc : Data.CIRCLE_LOCATIONS) {
+        for (final Data.CircleLocation loc : Data.CIRCLE_LOCATIONS) {
             g.setColor(loc.getState().getColor());
             g.fillOval(loc.getX(), loc.getY(), loc.getSize(), loc.getSize());
         }

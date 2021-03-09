@@ -1,5 +1,6 @@
 package de.jonas;
 
+import de.jonas.viergewinnt.Bot;
 import de.jonas.viergewinnt.FieldState;
 import de.jonas.viergewinnt.GUI;
 import org.jetbrains.annotations.NotNull;
@@ -17,10 +18,19 @@ public class VierGewinnt {
     public static void main(final String[] args) {
         // open Graphical-User-Interface
         new GUI();
+        // set user is beginning
+        FieldState.setState(FieldState.USER);
+        // start bot
+        new Bot().start();
     }
 
     public void win(@NotNull final FieldState state) {
-        System.out.println("Has won: " + state.toString());
+        stopGame();
+        new GUI(state);
+    }
+
+    private void stopGame() {
+        FieldState.setState(FieldState.NONE);
     }
 
 }
