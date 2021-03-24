@@ -26,7 +26,7 @@ public class ActionHandler implements ActionListener {
                 continue;
             }
             Data.CIRCLE_LOCATIONS[field].setState(FieldState.USER);
-            new WinHandler().checkWin();
+            WinHandler.getInstance().checkWin();
             FieldState.setState(FieldState.COMPUTER);
             return;
         }

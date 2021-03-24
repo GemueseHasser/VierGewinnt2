@@ -1,18 +1,34 @@
 package de.jonas.viergewinnt;
 
-import de.jonas.VierGewinnt;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WinHandler {
+
+    private static final List<WinListener> WIN_LISTENERS = new ArrayList<>();
+
+    @Getter
+    private static WinHandler instance;
+
+    public WinHandler() {
+        instance = this;
+    }
 
     public void checkWin() {
         if (hasWon(FieldState.USER)) {
-            new VierGewinnt().win(FieldState.USER);
+            for (final WinListener listener : WIN_LISTENERS) {
+                listener.win(FieldState.USER);
+            }
             return;
         }
         if (hasWon(FieldState.COMPUTER)) {
-            new VierGewinnt().win(FieldState.COMPUTER);
+            for (final WinListener listener : WIN_LISTENERS) {
+                listener.win(FieldState.COMPUTER);
+            }
         }
     }
 
@@ -35,6 +51,10 @@ public class WinHandler {
             }
         }
         return true;
+    }
+
+    public static void addListener(@NotNull final WinListener listener) {
+        WIN_LISTENERS.add(listener);
     }
 
 }

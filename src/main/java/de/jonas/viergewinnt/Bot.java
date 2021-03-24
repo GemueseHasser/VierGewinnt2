@@ -31,7 +31,7 @@ public class Bot {
                     continue;
                 }
                 Data.CIRCLE_LOCATIONS[field].setState(FieldState.COMPUTER);
-                new WinHandler().checkWin();
+                WinHandler.getInstance().checkWin();
                 FieldState.setState(FieldState.USER);
                 return;
             }
