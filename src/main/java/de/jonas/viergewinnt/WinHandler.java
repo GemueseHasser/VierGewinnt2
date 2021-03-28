@@ -4,31 +4,32 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
-import java.util.ArrayList;
-import java.util.List;
+import static de.jonas.viergewinnt.FieldState.COMPUTER;
+import static de.jonas.viergewinnt.FieldState.NONE;
+import static de.jonas.viergewinnt.FieldState.USER;
 
 public class WinHandler {
 
-    private static final List<WinListener> WIN_LISTENERS = new ArrayList<>();
-
     @Getter
     private static WinHandler instance;
+
+    private static WinListener winListener;
 
     public WinHandler() {
         instance = this;
     }
 
     public void checkWin() {
-        if (hasWon(FieldState.USER)) {
-            for (final WinListener listener : WIN_LISTENERS) {
-                listener.win(FieldState.USER);
-            }
+        if (hasWon(USER)) {
+            winListener.win(USER);
             return;
         }
-        if (hasWon(FieldState.COMPUTER)) {
-            for (final WinListener listener : WIN_LISTENERS) {
-                listener.win(FieldState.COMPUTER);
-            }
+        if (hasWon(COMPUTER)) {
+            winListener.win(COMPUTER);
+            return;
+        }
+        if (isIndecisive()) {
+            winListener.win(NONE);
         }
     }
 
@@ -53,8 +54,17 @@ public class WinHandler {
         return true;
     }
 
-    public static void addListener(@NotNull final WinListener listener) {
-        WIN_LISTENERS.add(listener);
+    private boolean isIndecisive() {
+        for (final Data.CircleLocation location : Data.CIRCLE_LOCATIONS) {
+            if (location.getState().equals(NONE)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void setWinListener(@NotNull final WinListener listener) {
+        winListener = listener;
     }
 
 }

@@ -343,4 +343,14 @@ public final class Data {
         }
     }
 
+    @RequiredArgsConstructor
+    public static final class InfoFrameText {
+        @Getter
+        private final String label;
+        @Getter
+        private final String button;
+        @Getter
+        private final String title;
+    }
+
 }

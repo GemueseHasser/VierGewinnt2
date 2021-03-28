@@ -9,26 +9,46 @@ import java.awt.Color;
 public enum FieldState {
 
     NONE(
-        Color.WHITE
+        Color.WHITE,
+        new Data.InfoFrameText(
+            "Es ist unentscheiden!",
+            "Okay...",
+            "Unentschieden!"
+        )
     ),
     USER(
-        Color.YELLOW
+        Color.YELLOW,
+        new Data.InfoFrameText(
+            "Du hast gewonnen!",
+            "Cool!",
+            "Sieg!"
+        )
     ),
     COMPUTER(
-        Color.RED
+        Color.RED,
+        new Data.InfoFrameText(
+            "Der Computer hat gewonnen!",
+            "Schade",
+            "Niederlage!"
+        )
     );
 
     @Getter
     private final Color color;
 
     @Getter
+    private final Data.InfoFrameText info;
+
+    @Getter
     @Setter
     private static FieldState state;
 
     FieldState(
-        @NotNull final Color color
+        @NotNull final Color color,
+        @NotNull final Data.InfoFrameText info
     ) {
         this.color = color;
+        this.info = info;
     }
 
 }

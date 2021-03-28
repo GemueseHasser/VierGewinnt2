@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
-public class GUI {
+public final class GUI {
 
     private static final String TITLE = "Vier Gewinnt";
     private static final int WIDTH = 750;
@@ -53,21 +53,18 @@ public class GUI {
     }
 
     public GUI(@NotNull final FieldState state) {
-        final String labelText = (state.equals(FieldState.USER)) ? "Du hast gewonnen!" : "Der Computer hat gewonnen!";
-        final String buttonText = (state.equals(FieldState.USER)) ? "Cool" : "Schade";
-        final String title = (state.equals(FieldState.USER)) ? "Sieg!" : "Niederlage!";
-        frame = new JFrame(title);
+        frame = new JFrame(state.getInfo().getTitle());
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setBounds(0, 0, WIN_WIDTH, WIN_HEIGHT);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(null);
 
-        final JLabel label = new JLabel(labelText, JLabel.CENTER);
+        final JLabel label = new JLabel(state.getInfo().getLabel(), JLabel.CENTER);
         label.setBounds(WIN_LABEL_X, WIN_LABEL_Y, WIN_LABEL_WIDTH, WIN_LABEL_HEIGHT);
         label.setFont(FONT);
 
-        final JButton button = new JButton(buttonText);
+        final JButton button = new JButton(state.getInfo().getButton());
         button.setBounds(WIN_BUTTON_X, WIN_BUTTON_Y, WIN_BUTTON_WIDH, WIN_BUTTON_HEIGHT);
         button.setFont(FONT);
         button.addActionListener((actionEvent -> nextGame()));

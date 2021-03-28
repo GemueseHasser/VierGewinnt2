@@ -16,7 +16,6 @@ public class ActionHandler implements ActionListener {
 
     @Override
     public void actionPerformed(@NotNull final ActionEvent actionEvent) {
-        System.out.println("State: " + FieldState.getState().name());
         if (!FieldState.getState().equals(FieldState.USER)) {
             return;
         }
