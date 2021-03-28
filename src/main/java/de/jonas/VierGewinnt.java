@@ -13,6 +13,7 @@ import static de.jonas.viergewinnt.FieldState.USER;
 /**
  * Die Haupt- und Main-Klasse des Vier-Gewinnt Spiels. Von hier aus wird das gesamte Spiel initialisiert und gestartet.
  */
+@NotNull
 public final class VierGewinnt implements WinListener {
 
     /**
@@ -20,7 +21,7 @@ public final class VierGewinnt implements WinListener {
      *
      * @param args .
      */
-    public static void main(final String[] args) {
+    public static void main(@NotNull final String[] args) {
         startGame(USER);
     }
 

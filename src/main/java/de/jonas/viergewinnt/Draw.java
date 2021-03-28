@@ -1,5 +1,7 @@
 package de.jonas.viergewinnt;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -7,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+@NotNull
 public class Draw extends JLabel {
 
     public static final int MARGIN_TOP = 50;
@@ -15,9 +18,10 @@ public class Draw extends JLabel {
     private static final int MARGIN_RIGHT_ADDITION = 10;
 
     @Override
-    protected void paintComponent(final Graphics g) {
+    protected void paintComponent(@NotNull final Graphics g) {
         super.paintComponent(g);
 
+        @NotNull
         final Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -29,7 +33,7 @@ public class Draw extends JLabel {
             this.getHeight() - MARGIN_TOP
         );
 
-        for (final Data.CircleLocation loc : Data.CIRCLE_LOCATIONS) {
+        for (@NotNull final Data.CircleLocation loc : Data.CIRCLE_LOCATIONS) {
             g.setColor(loc.getState().getColor());
             g.fillOval(loc.getX(), loc.getY(), loc.getSize(), loc.getSize());
         }

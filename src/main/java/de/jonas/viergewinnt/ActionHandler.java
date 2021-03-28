@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Range;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@NotNull
 public class ActionHandler implements ActionListener {
 
     private final int buttonNumber;

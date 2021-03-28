@@ -3,10 +3,13 @@ package de.jonas.viergewinnt;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
+@NotNull
 public final class Data {
 
+    @NotNull
     public static final CircleLocation[] CIRCLE_LOCATIONS = new CircleLocation[] {
         // line 1
         new CircleLocation(
@@ -126,6 +129,7 @@ public final class Data {
         ),
     };
 
+    @NotNull
     public static final WinPossibility[] WIN_POSSIBILITIES = new WinPossibility[] {
         // horizontal
         new WinPossibility(
@@ -226,6 +230,7 @@ public final class Data {
         ),
     };
 
+    @NotNull
     public static final ButtonData[] BUTTON_DATA = new ButtonData[] {
         new ButtonData(
             0,
@@ -257,6 +262,7 @@ public final class Data {
         ),
     };
 
+    @NotNull
     public static final Column[] COLUMNS = new Column[] {
         new Column(
             new int[] {21, 14, 7, 0}
@@ -281,18 +287,21 @@ public final class Data {
         ),
     };
 
+    @NotNull
     @RequiredArgsConstructor
     public static final class WinPossibility {
         @Getter
         private final int[] chance;
     }
 
+    @NotNull
     @RequiredArgsConstructor
     public static final class Column {
         @Getter
         private final int[] column;
     }
 
+    @NotNull
     public static final class CircleLocation {
 
         private static final int SIZE = 75;
@@ -318,6 +327,7 @@ public final class Data {
         }
     }
 
+    @NotNull
     public static final class ButtonData {
 
         private static final int Y = 0;
@@ -343,12 +353,16 @@ public final class Data {
         }
     }
 
+    @NotNull
     @RequiredArgsConstructor
     public static final class InfoFrameText {
+        @NotNull
         @Getter
         private final String label;
+        @NotNull
         @Getter
         private final String button;
+        @NotNull
         @Getter
         private final String title;
     }

@@ -6,8 +6,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.Color;
 
+@NotNull
 public enum FieldState {
 
+    @NotNull
     NONE(
         Color.WHITE,
         new Data.InfoFrameText(
@@ -16,6 +18,7 @@ public enum FieldState {
             "Unentschieden!"
         )
     ),
+    @NotNull
     USER(
         Color.YELLOW,
         new Data.InfoFrameText(
@@ -24,6 +27,7 @@ public enum FieldState {
             "Sieg!"
         )
     ),
+    @NotNull
     COMPUTER(
         Color.RED,
         new Data.InfoFrameText(
@@ -33,12 +37,15 @@ public enum FieldState {
         )
     );
 
+    @NotNull
     @Getter
     private final Color color;
 
+    @NotNull
     @Getter
     private final Data.InfoFrameText info;
 
+    @NotNull
     @Getter
     @Setter
     private static FieldState state;

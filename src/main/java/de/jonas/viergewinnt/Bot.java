@@ -1,6 +1,7 @@
 package de.jonas.viergewinnt;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import java.util.Timer;
@@ -11,6 +12,7 @@ import static de.jonas.viergewinnt.FieldState.COMPUTER;
 import static de.jonas.viergewinnt.FieldState.NONE;
 import static de.jonas.viergewinnt.FieldState.USER;
 
+@NotNull
 public class Bot {
 
     private static final int TIMER_PERIOD = 100;
@@ -23,7 +25,7 @@ public class Bot {
                 if (!FieldState.getState().equals(COMPUTER)) {
                     return;
                 }
-                for (final Data.WinPossibility possibility : Data.WIN_POSSIBILITIES) {
+                for (@NotNull final Data.WinPossibility possibility : Data.WIN_POSSIBILITIES) {
                     // check if computer can win
                     if (canWin(possibility, COMPUTER) != -1) {
                         // try to win
@@ -49,6 +51,8 @@ public class Bot {
         }, 0, TIMER_PERIOD);
     }
 
+    @NotNull
+    @Range(from = 0, to = Integer.MAX_VALUE)
     private Integer canWin(
         @NotNull final Data.WinPossibility possibility,
         @NotNull final FieldState state
@@ -103,8 +107,9 @@ public class Bot {
         return false;
     }
 
+    @Nullable
     private Data.Column getColumn(final int field) {
-        for (final Data.Column column : Data.COLUMNS) {
+        for (@NotNull final Data.Column column : Data.COLUMNS) {
             for (final int columnField : column.getColumn()) {
                 if (columnField == field) return column;
             }

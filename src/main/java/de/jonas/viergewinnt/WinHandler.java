@@ -8,13 +8,17 @@ import static de.jonas.viergewinnt.FieldState.COMPUTER;
 import static de.jonas.viergewinnt.FieldState.NONE;
 import static de.jonas.viergewinnt.FieldState.USER;
 
+@NotNull
 public class WinHandler {
 
+    @NotNull
     @Getter
     private static WinHandler instance;
 
+    @NotNull
     private static WinListener winListener;
 
+    @NotNull
     public WinHandler() {
         instance = this;
     }
@@ -34,7 +38,7 @@ public class WinHandler {
     }
 
     private boolean hasWon(@NotNull final FieldState state) {
-        for (final Data.WinPossibility winPossibility : Data.WIN_POSSIBILITIES) {
+        for (@NotNull final Data.WinPossibility winPossibility : Data.WIN_POSSIBILITIES) {
             if (isSame(winPossibility.getChance(), state)) {
                 return true;
             }
@@ -55,7 +59,7 @@ public class WinHandler {
     }
 
     private boolean isIndecisive() {
-        for (final Data.CircleLocation location : Data.CIRCLE_LOCATIONS) {
+        for (@NotNull final Data.CircleLocation location : Data.CIRCLE_LOCATIONS) {
             if (location.getState().equals(NONE)) {
                 return false;
             }

@@ -8,8 +8,10 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
+@NotNull
 public final class GUI {
 
+    @NotNull
     private static final String TITLE = "Vier Gewinnt";
     private static final int WIDTH = 750;
     public static final int HEIGHT = 500;
@@ -30,10 +32,13 @@ public final class GUI {
     private static final int WIN_BUTTON_HEIGHT = 30;
 
     private static final int FONT_SIZE = 20;
+    @NotNull
     private static final Font FONT = new Font("Arial", Font.BOLD, FONT_SIZE);
 
+    @NotNull
     private final JFrame frame;
 
+    @NotNull
     public GUI() {
         frame = new JFrame(TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,6 +47,7 @@ public final class GUI {
         frame.setResizable(false);
         frame.setLayout(null);
 
+        @NotNull
         final Draw draw = new Draw();
         draw.setBounds(0, 0, WIDTH, HEIGHT);
         draw.setVisible(true);
@@ -52,6 +58,7 @@ public final class GUI {
         frame.setVisible(true);
     }
 
+    @NotNull
     public GUI(@NotNull final FieldState state) {
         frame = new JFrame(state.getInfo().getTitle());
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -60,10 +67,12 @@ public final class GUI {
         frame.setResizable(false);
         frame.setLayout(null);
 
+        @NotNull
         final JLabel label = new JLabel(state.getInfo().getLabel(), JLabel.CENTER);
         label.setBounds(WIN_LABEL_X, WIN_LABEL_Y, WIN_LABEL_WIDTH, WIN_LABEL_HEIGHT);
         label.setFont(FONT);
 
+        @NotNull
         final JButton button = new JButton(state.getInfo().getButton());
         button.setBounds(WIN_BUTTON_X, WIN_BUTTON_Y, WIN_BUTTON_WIDH, WIN_BUTTON_HEIGHT);
         button.setFont(FONT);
@@ -75,6 +84,7 @@ public final class GUI {
     }
 
     private void placeButtons() {
+        @NotNull
         final JButton[] buttons = new JButton[BUTOON_AMOUNT];
 
         for (int i = 0; i < BUTOON_AMOUNT; i++) {
