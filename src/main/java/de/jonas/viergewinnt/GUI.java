@@ -19,9 +19,9 @@ public class GUI {
     private static final int WIN_WIDTH = 450;
     private static final int WIN_HEIGHT = 300;
 
-    private static final int WIN_LABEL_X = 10;
+    private static final int WIN_LABEL_X = 0;
     private static final int WIN_LABEL_Y = 10;
-    private static final int WIN_LABEL_WIDTH = 430;
+    private static final int WIN_LABEL_WIDTH = 450;
     private static final int WIN_LABEL_HEIGHT = 50;
 
     private static final int WIN_BUTTON_X = 25;
@@ -63,7 +63,7 @@ public class GUI {
         frame.setResizable(false);
         frame.setLayout(null);
 
-        final JLabel label = new JLabel(labelText);
+        final JLabel label = new JLabel(labelText, JLabel.CENTER);
         label.setBounds(WIN_LABEL_X, WIN_LABEL_Y, WIN_LABEL_WIDTH, WIN_LABEL_HEIGHT);
         label.setFont(FONT);
 
