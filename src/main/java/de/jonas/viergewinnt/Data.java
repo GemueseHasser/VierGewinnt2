@@ -309,9 +309,11 @@ public final class Data {
     @NotNull
     @RequiredArgsConstructor
     public static final class WinPossibility {
+        //<editor-fold desc="LOCAL FIELDS">
         /** Die Felder, die zu einem Sieg führen können. */
         @Getter
         private final int[] chance;
+        //</editor-fold>
     }
     //</editor-fold>
 
@@ -323,9 +325,11 @@ public final class Data {
     @NotNull
     @RequiredArgsConstructor
     public static final class Column {
+        //<editor-fold desc="LOCAL FIELDS">
         /** Die Felder, die eine Spalte bilden. */
         @Getter
         private final int[] column;
+        //</editor-fold>
     }
     //</editor-fold>
 
@@ -337,9 +341,13 @@ public final class Data {
     @NotNull
     public static final class CircleLocation {
 
+        //<editor-fold desc="CONSTANTS">
         /** Die Konstant festgehaltene Größe der {@link CircleLocation}. */
         private static final int SIZE = 75;
+        //</editor-fold>
 
+
+        //<editor-fold desc="LOCAL FIELDS">
         /** Die Größe der {@link CircleLocation}. */
         @Getter
         private final int size;
@@ -353,7 +361,10 @@ public final class Data {
         @Getter
         @Setter
         private FieldState state;
+        //</editor-fold>
 
+
+        //<editor-fold desc="CONSTRUCTORS">
         /**
          * Erstellt mithilfe von Koordinaten eine neue und vollständig unabhängige {@link CircleLocation}.
          *
@@ -369,6 +380,7 @@ public final class Data {
             this.y = Draw.MARGIN_TOP + y;
             this.state = FieldState.NONE;
         }
+        //</editor-fold>
     }
     //</editor-fold>
 
@@ -380,11 +392,15 @@ public final class Data {
     @NotNull
     public static final class ButtonData {
 
+        //<editor-fold desc="CONSTANTS">
         /** Die konstant festgelegte Y-Koordinate der {@link ButtonData}. */
         private static final int Y = 0;
         /** Die konstant festgelegte Höhe der {@link ButtonData}. */
         private static final int HEIGHT = GUI.HEIGHT;
+        //</editor-fold>
 
+
+        //<editor-fold desc="LOCAL FIELDS">
         /** Die X-Koordinate der {@link ButtonData}. */
         @Getter
         private final int x;
@@ -397,7 +413,10 @@ public final class Data {
         /** Die Höhe der {@link ButtonData}. */
         @Getter
         private final int height;
+        //</editor-fold>
 
+
+        //<editor-fold desc="CONSTRUCTORS">
         /**
          * Erstellt eine neue und vollständig unabhängige {@link ButtonData} mithilfe einer X-Koordinate und einer
          * Breite, da die Y-Koordinate und die Höhe konstant festgelegt sind.
@@ -414,6 +433,7 @@ public final class Data {
             this.width = width;
             this.height = HEIGHT;
         }
+        //</editor-fold>
     }
     //</editor-fold>
 
@@ -426,6 +446,7 @@ public final class Data {
     @NotNull
     @RequiredArgsConstructor
     public static final class InfoFrameText {
+        //<editor-fold desc="LOCAL FIELDS">
         /** Der Schriftzug des {@link InfoFrameText}. */
         @NotNull
         @Getter
@@ -438,6 +459,7 @@ public final class Data {
         @NotNull
         @Getter
         private final String title;
+        //</editor-fold>
     }
     //</editor-fold>
 
