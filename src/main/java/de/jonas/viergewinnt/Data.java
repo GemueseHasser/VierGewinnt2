@@ -343,7 +343,7 @@ public final class Data {
 
         //<editor-fold desc="CONSTANTS">
         /** Die Konstant festgehaltene Größe der {@link CircleLocation}. */
-        private static final int SIZE = 75;
+        public static final int SIZE = 75;
         //</editor-fold>
 
 
