@@ -1,5 +1,6 @@
 package de.jonas.viergewinnt;
 
+import de.jonas.VierGewinnt;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JFrame;
@@ -37,7 +38,7 @@ public final class Draw extends JLabel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // draw background
-        g.setColor(Color.BLUE);
+        g.setColor(Color.decode("#3715AC"));
         g.fillRect(
             MARGIN_LEFT_AND_RIGHT,
             MARGIN_TOP,
@@ -47,8 +48,12 @@ public final class Draw extends JLabel {
 
         // draw chips
         for (@NotNull final Data.CircleLocation loc : Data.CIRCLE_LOCATIONS) {
-            g.setColor(loc.getState().getColor());
-            g.fillOval(loc.getX(), loc.getY(), loc.getSize(), loc.getSize());
+            if (loc.getState().getImage() == null) {
+                g.setColor(Color.WHITE);
+                g.fillOval(loc.getX(), loc.getY(), loc.getSize(), loc.getSize());
+                continue;
+            }
+            g.drawImage(loc.getState().getImage(), loc.getX(), loc.getY(), loc.getSize(), loc.getSize(), null);
         }
 
         repaint();
