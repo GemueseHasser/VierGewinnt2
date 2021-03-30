@@ -24,7 +24,7 @@ public final class Bot {
 
     //<editor-fold desc="CONSTANTS">
     /** Das Intervall, in dem der {@link Timer} seine Aktion ausführt, um alles für den {@link Bot} neu zu berechnen. */
-    private static final int TIMER_PERIOD = 100;
+    private static final int TIMER_PERIOD = 2000;
     //</editor-fold>
 
 
