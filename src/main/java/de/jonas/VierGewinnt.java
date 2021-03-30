@@ -25,7 +25,7 @@ public final class VierGewinnt implements WinListener {
      */
     public static void main(@NotNull final String[] args) {
         // load images
-        new ImageLoader();
+        ImageLoader.getINSTANCE().loadImages();
         // start game
         startGame(USER);
     }

@@ -12,6 +12,13 @@ import java.awt.Image;
  */
 public class ImageLoader {
 
+    //<editor-fold desc="CONSTANTS">
+    /** Die Instanz-Variable, womit man auf den {@link ImageLoader} zugreifen kann. */
+    @Getter
+    private static final ImageLoader INSTANCE = new ImageLoader();
+    //</editor-fold>
+
+
     //<editor-fold desc="STATIC FIELDS">
     /** Der rote Chip des Spiels. */
     @Getter
@@ -22,13 +29,11 @@ public class ImageLoader {
     //</editor-fold>
 
 
-    //<editor-fold desc="CONSTRUCTORS">
     /**
-     * Erzeugt eine neue und vollständig unabhängige Instanz des {@link ImageLoader ImageLoaders}. Hiermit werden
-     * dann alle Bilder neu geladen.
+     * Es werden alle Bilder neu geladen.
      */
     @SneakyThrows
-    public ImageLoader() {
+    public void loadImages() {
         // load red chip
         final Image redChipOriginal = ImageIO.read(
             getClass().getResource("/redChip.png")
@@ -48,6 +53,5 @@ public class ImageLoader {
             Image.SCALE_SMOOTH
         );
     }
-    //</editor-fold>
 
 }
