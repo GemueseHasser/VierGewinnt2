@@ -54,7 +54,6 @@ public final class Bot {
                         placeChip(canWin(possibility, COMPUTER));
                         FieldState.setState(FieldState.USER);
                         WinHandler.getINSTANCE().checkWin();
-                        System.out.println("checked computer win");
                         return;
                     }
                     // check if player can win
@@ -63,7 +62,6 @@ public final class Bot {
                         placeChip(canWin(possibility, USER));
                         FieldState.setState(FieldState.USER);
                         WinHandler.getINSTANCE().checkWin();
-                        System.out.println("checked user win");
                         return;
                     }
                 }

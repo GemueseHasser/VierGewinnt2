@@ -46,7 +46,6 @@ public final class VierGewinnt implements WinListener {
     //<editor-fold desc="implementation">
     @Override
     public void win(@NotNull final FieldState state) {
-        System.out.println("triggered listener");
         FieldState.setState(NONE);
         new GUI(state);
     }
