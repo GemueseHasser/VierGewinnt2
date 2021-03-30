@@ -8,21 +8,32 @@ import static de.jonas.viergewinnt.FieldState.COMPUTER;
 import static de.jonas.viergewinnt.FieldState.NONE;
 import static de.jonas.viergewinnt.FieldState.USER;
 
+/**
+ * Mithilfe des {@link WinHandler WinHandlers} kann man überprüfen, ob ein bestimmter Nutzer gewonnen hat. Zufalls dies
+ * so ist, wird ein {@link WinListener} ausgelöst.
+ */
 @NotNull
-public class WinHandler {
+public final class WinHandler {
 
-    @NotNull
+    //<editor-fold desc="CONSTANTS">
+    /**
+     * Die Instanz-Variable des {@link WinHandler WinHandlers}, mit der man auf die Instanz zugreifen kann, ohne den
+     * {@link WinHandler} jedes Mal neu zu instanziieren.
+     */
     @Getter
-    private static WinHandler instance;
+    private static final WinHandler INSTANCE = new WinHandler();
+    //</editor-fold>
 
-    @NotNull
-    private static WinListener winListener;
 
-    @NotNull
-    public WinHandler() {
-        instance = this;
-    }
+    //<editor-fold desc="STATIC FIELDS">
+    /** Der {@link WinListener}, der ausgelöst wird, sobald das Spiel beendet wurde. */
+    private WinListener winListener;
+    //</editor-fold>
 
+    /**
+     * Überprüft das Spiel auf einen Sieg oder ein Unentschieden. Es wird zu Gunsten des Users immer zuerst der User auf
+     * einen Sieg überprüft, dann der Computer und dann wird das Spiel auf ein Unentschieden geprüft.
+     */
     public void checkWin() {
         if (hasWon(USER)) {
             winListener.win(USER);
@@ -37,6 +48,22 @@ public class WinHandler {
         }
     }
 
+    /**
+     * Setzt den {@link WinListener} des {@link WinHandler} neu.
+     *
+     * @param listener Der neue {@link WinListener} für den {@link WinHandler}.
+     */
+    public void setWinListener(@NotNull final WinListener listener) {
+        this.winListener = listener;
+    }
+
+    /**
+     * Prüft, ob ein bestimmter {@link FieldState} gewonnen hat.
+     *
+     * @param state Der {@link FieldState}, der auf einen Sieg geprüft hat.
+     *
+     * @return Wenn der gewisse {@link FieldState} gewonnen hat {@code true}, ansonsten {@code false}.
+     */
     private boolean hasWon(@NotNull final FieldState state) {
         for (@NotNull final Data.WinPossibility winPossibility : Data.WIN_POSSIBILITIES) {
             if (isSame(winPossibility.getChance(), state)) {
@@ -46,6 +73,14 @@ public class WinHandler {
         return false;
     }
 
+    /**
+     * Prüft, ob mehrere gewisse Felder denselben {@link FieldState} haben.
+     *
+     * @param fields Die Felder, die überprüft werden.
+     * @param state  Der {@link FieldState}, auf den die Felder geprüft werden sollen.
+     *
+     * @return Wenn die Felder alle denselben {@link FieldState} haben {@code true}, ansonsten {@code false}.
+     */
     private boolean isSame(
         @Range(from = 0, to = 3) final int[] fields,
         @NotNull final FieldState state
@@ -58,6 +93,11 @@ public class WinHandler {
         return true;
     }
 
+    /**
+     * Prüft, ob ein Unentschieden zustande gekommen ist.
+     *
+     * @return Wenn ein Unentschieden zustande gekommen ist, {@code true}, ansonsten {@code false}.
+     */
     private boolean isIndecisive() {
         for (@NotNull final Data.CircleLocation location : Data.CIRCLE_LOCATIONS) {
             if (location.getState().equals(NONE)) {
@@ -65,10 +105,6 @@ public class WinHandler {
             }
         }
         return true;
-    }
-
-    public static void setWinListener(@NotNull final WinListener listener) {
-        winListener = listener;
     }
 
 }

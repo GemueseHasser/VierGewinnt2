@@ -16,6 +16,7 @@ import static de.jonas.viergewinnt.FieldState.USER;
 @NotNull
 public final class VierGewinnt implements WinListener {
 
+    //<editor-fold desc="setup and start">
     /**
      * Die Main-Methode der Anwendung.
      *
@@ -25,11 +26,13 @@ public final class VierGewinnt implements WinListener {
         startGame(USER);
     }
 
+    /**
+     * Startet und initialisiert das Spiel.
+     * @param state Der {@link FieldState}, der beginnen soll.
+     */
     public static void startGame(@NotNull final FieldState state) {
-        // initialize win-handler
-        new WinHandler();
-        // add new win-listener
-        WinHandler.setWinListener(new VierGewinnt());
+        // initialize win listener
+        WinHandler.getINSTANCE().setWinListener(new VierGewinnt());
         // open Graphical-User-Interface
         new GUI();
         // set user is beginning
@@ -37,11 +40,16 @@ public final class VierGewinnt implements WinListener {
         // start bot
         new Bot().start();
     }
+    //</editor-fold>
 
+
+    //<editor-fold desc="implementation">
     @Override
     public void win(@NotNull final FieldState state) {
+        System.out.println("triggered listener");
         FieldState.setState(NONE);
         new GUI(state);
     }
+    //</editor-fold>
 
 }
