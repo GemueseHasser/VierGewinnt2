@@ -1,12 +1,15 @@
 package de.jonas.viergewinnt;
 
+import de.jonas.VierGewinnt;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JFrame;
 
 import java.awt.Color;
+import java.awt.Image;
 
 /**
  * Ein {@link FieldState} beschreibt den Status einer bestimmten {@link Data.CircleLocation}.
@@ -17,7 +20,7 @@ public enum FieldState {
     /** Ein leerer {@link FieldState} mit seiner Farbe und dem {@link Data.InfoFrameText}. */
     @NotNull
     NONE(
-        Color.WHITE,
+        null,
         new Data.InfoFrameText(
             "Es ist unentscheiden!",
             "Okay...",
@@ -27,7 +30,7 @@ public enum FieldState {
     /** Der {@link FieldState} des Nutzers, mit seiner Farbe und dem {@link Data.InfoFrameText}. */
     @NotNull
     USER(
-        Color.YELLOW,
+        ImageLoader.getRedChip(),
         new Data.InfoFrameText(
             "Du hast gewonnen!",
             "Cool!",
@@ -37,7 +40,7 @@ public enum FieldState {
     /** Der {@link FieldState} des Computers, mit seiner Farbe und dem {@link Data.InfoFrameText}. */
     @NotNull
     COMPUTER(
-        Color.RED,
+        ImageLoader.getYellowChip(),
         new Data.InfoFrameText(
             "Der Computer hat gewonnen!",
             "Schade",
@@ -55,9 +58,9 @@ public enum FieldState {
 
     //<editor-fold desc="LOCAL FIELDS">
     /** Die {@link Color Farbe} des jeweiligen {@link FieldState}. */
-    @NotNull
+    @Nullable
     @Getter
-    private final Color color;
+    private final Image image;
 
     /** Die {@link Data.InfoFrameText Info} des jeweiligen {@link FieldState} für das {@link JFrame Fenster}. */
     @NotNull
@@ -71,14 +74,14 @@ public enum FieldState {
      * Erzeugt mithilfe einer {@link Color Farbe} und einer {@link Data.InfoFrameText Info} einen neuen und vollständig
      * unabhängigen {@link FieldState}.
      *
-     * @param color Die {@link Color Farbe} des {@link FieldState}.
+     * @param image Das {@link Image Bild}, des {@link FieldState}.
      * @param info  Die {@link Data.InfoFrameText Info} des {@link FieldState}.
      */
     FieldState(
-        @NotNull final Color color,
+        @Nullable final Image image,
         @NotNull final Data.InfoFrameText info
     ) {
-        this.color = color;
+        this.image = image;
         this.info = info;
     }
     //</editor-fold>

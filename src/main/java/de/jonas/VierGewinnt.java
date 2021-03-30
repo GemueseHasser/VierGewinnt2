@@ -3,6 +3,7 @@ package de.jonas;
 import de.jonas.viergewinnt.Bot;
 import de.jonas.viergewinnt.FieldState;
 import de.jonas.viergewinnt.GUI;
+import de.jonas.viergewinnt.ImageLoader;
 import de.jonas.viergewinnt.WinHandler;
 import de.jonas.viergewinnt.WinListener;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,9 @@ public final class VierGewinnt implements WinListener {
      * @param args .
      */
     public static void main(@NotNull final String[] args) {
+        // load images
+        new ImageLoader();
+        // start game
         startGame(USER);
     }
 
@@ -31,8 +35,9 @@ public final class VierGewinnt implements WinListener {
      * @param state Der {@link FieldState}, der beginnen soll.
      */
     public static void startGame(@NotNull final FieldState state) {
+        final VierGewinnt game = new VierGewinnt();
         // initialize win listener
-        WinHandler.getINSTANCE().setWinListener(new VierGewinnt());
+        WinHandler.getINSTANCE().setWinListener(game);
         // open Graphical-User-Interface
         new GUI();
         // set user is beginning
