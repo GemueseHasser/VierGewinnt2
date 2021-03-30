@@ -2,6 +2,7 @@ package de.jonas.viergewinnt;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 
@@ -35,19 +36,17 @@ public class ImageLoader {
     @SneakyThrows
     public void loadImages() {
         // load red chip
-        final Image redChipOriginal = ImageIO.read(
-            getClass().getResource("/redChip.png")
-        );
-        redChip = redChipOriginal.getScaledInstance(
-            Data.CircleLocation.SIZE,
-            Data.CircleLocation.SIZE,
-            Image.SCALE_SMOOTH
-        );
+        redChip = getImage("redChip.png");
         // load yellow chip
-        final Image yellowChipOriginal = ImageIO.read(
-            getClass().getResource("/yellowChip.png")
-        );
-        yellowChip = yellowChipOriginal.getScaledInstance(
+        yellowChip = getImage("yellowChip.png");
+    }
+
+    @SneakyThrows
+    private Image getImage(@NotNull final String name) {
+        // load basic image
+        final Image image = ImageIO.read(getClass().getResource("/" + name));
+        // return scaled image
+        return image.getScaledInstance(
             Data.CircleLocation.SIZE,
             Data.CircleLocation.SIZE,
             Image.SCALE_SMOOTH
